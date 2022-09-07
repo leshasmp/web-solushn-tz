@@ -2,7 +2,7 @@
 
 class Song < ApplicationRecord
   belongs_to :artist
-  has_one :download
+  has_many :downloads
 
   validates :title, :length, :filesize, presence: true
 

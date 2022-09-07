@@ -7,7 +7,7 @@ class Artist < ApplicationRecord
 
   def songs_top
     songs = self.songs
-    Song.joins(:download).where(id: songs).order(count: :desc)
+    Song.joins(:download).where(id: songs)
   end
 
   def self.top(letter, count)

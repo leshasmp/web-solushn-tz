@@ -26,8 +26,9 @@ end
 songs = Song.all
 
 songs.each do |song|
-  Download.create!(
-    song_id: song.id,
-    count: rand(0..100)
-  )
+  100.times do |_i|
+    Download.create!(
+      song_id: song.id
+    )
+  end
 end

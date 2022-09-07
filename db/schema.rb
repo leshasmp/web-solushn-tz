@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_124816) do
 
   create_table "downloads", force: :cascade do |t|
     t.integer "song_id", null: false
-    t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["song_id"], name: "index_downloads_on_song_id"
