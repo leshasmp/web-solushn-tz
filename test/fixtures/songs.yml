@@ -4,8 +4,10 @@ one:
   title: MyString
   length: 1
   filesize: 1
+  artist: one
 
 two:
   title: MyString
   length: 1
   filesize: 1
+  artist: two

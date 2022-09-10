@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 class Artist < ApplicationRecord
-  has_many :songs
+  has_many :songs, -> { order(title: :asc) }
 
   validates :name, presence: true
 
   def songs_top
-    songs = self.songs
-    Song.joins(:download).where(id: songs)
+    Song.where(id: songs.ids)
+        .left_joins(:downloads)
+        .group(:id)
+        .order('COUNT(downloads.id) DESC')
   end
 
   def self.top(letter, count)
-    Artist.joins(songs: [:download]).where('name LIKE ?', "#{letter}%").order(count: :desc).limit(count)
+    Artist.where('name LIKE ?', "#{letter}%").limit(count)
   end
 end

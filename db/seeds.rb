@@ -17,8 +17,8 @@ artists.each do |artist|
   5.times do |_i|
     artist.songs.create!(
       title: Faker::Music::GratefulDead.song,
-      length: rand(0..100),
-      filesize: rand(0..100)
+      length: rand(1..100),
+      filesize: rand(1..100)
     )
   end
 end
@@ -26,9 +26,10 @@ end
 songs = Song.all
 
 songs.each do |song|
-  100.times do |_i|
+  rand(1..10).times do |_i|
     Download.create!(
-      song_id: song.id
+      song_id: song.id,
+      created_at: Date.today - rand(10).days
     )
   end
 end
