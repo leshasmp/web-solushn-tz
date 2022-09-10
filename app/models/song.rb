@@ -7,7 +7,7 @@ class Song < ApplicationRecord
   validates :title, :length, :filesize, presence: true
 
   def self.top(days, count)
-    Song.left_joins(:downloads)
+    Song.joins(:downloads)
         .where(downloads: { created_at: days.days.ago..Time.current })
         .group(:id)
         .order('COUNT(downloads.id) DESC')
